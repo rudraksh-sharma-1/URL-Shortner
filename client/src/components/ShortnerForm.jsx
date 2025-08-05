@@ -1,18 +1,26 @@
 import { useState } from "react";
 import axios from "axios";
+import { useAuth } from "../contexts/AuthContext";
 
 const ShortenerForm = () => {
   const [originalUrl, setOriginalUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const { token } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
     try {
-      const res = await axios.post("https://url-shortner-xclh.onrender.com/shorten", { originalUrl });
+      const res = await axios.post("https://url-shortner-xclh.onrender.com/shorten", { originalUrl },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
       setShortUrl(res.data.shortUrl);
     } catch (err) {
       setError("Failed to shorten URL.");
