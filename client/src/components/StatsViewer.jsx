@@ -9,7 +9,7 @@ const StatsViewer = () => {
   const getStats = async () => {
     setError("");
     try {
-      const res = await axios.get(`http://localhost:5000/stats/${code}`);
+      const res = await axios.get(`https://url-shortner-xclh.onrender.com/stats/${code}`);
       setStats(res.data);
     } catch (err) {
       setError("No stats found for this code.");

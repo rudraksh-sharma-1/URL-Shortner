@@ -12,7 +12,7 @@ const ShortenerForm = () => {
     setError("");
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/shorten", { originalUrl });
+      const res = await axios.post("https://url-shortner-xclh.onrender.com/shorten", { originalUrl });
       setShortUrl(res.data.shortUrl);
     } catch (err) {
       setError("Failed to shorten URL.");

@@ -52,7 +52,7 @@ const HistoryPage = () => {
                 className="border border-gray-200 rounded-md p-4 shadow-sm bg-white"
               >
                 <p><strong>Original:</strong> <a href={url.originalUrl} target="_blank" rel="noreferrer" className="text-blue-600 underline">{url.originalUrl}</a></p>
-                <p><strong>Short:</strong> <a href={`http://localhost:5000/${url.shortCode}`} target="_blank" rel="noreferrer" className="text-green-600 underline">{`http://localhost:5000/${url.shortCode}`}</a></p>
+                <p><strong>Short:</strong> <a href={`https://url-shortner-xclh.onrender.com/${url.shortCode}`} target="_blank" rel="noreferrer" className="text-green-600 underline">{`http://localhost:5000/${url.shortCode}`}</a></p>
                 <p><strong>Clicks:</strong> {url.clickCount}</p>
                 <p><strong>Created:</strong> {new Date(url.createdAt).toLocaleString()}</p>
               </div>
