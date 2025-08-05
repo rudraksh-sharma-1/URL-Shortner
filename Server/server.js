@@ -11,8 +11,17 @@ import authRoutes from "./Routes/authRoutes.js";
 dotenv.config();
 connectDB();
 
+const allowedOrigins = [
+    "http://localhost:5173", // local dev
+    "https://rudraksh-url-shortner.vercel.app", // deployed frontend
+];
+
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: allowedOrigins,
+     methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+}));
 app.use(express.json());
 
 
