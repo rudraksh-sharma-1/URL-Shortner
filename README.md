@@ -66,7 +66,23 @@ This is a full-featured URL shortening application where users can:
 
 ### 📁 Backend Setup
 
-1. Clone the repo:
+Clone the repo:
 ```bash
 git clone https://github.com/your-username/url-shortener.git
 cd url-shortener/server
+npm install
+
+Create a .env file:
+PORT=5000
+BASE_URL=https://url-shortner-xclh.onrender.com
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+
+npm run dev
+cd ../client
+npm install
+npm run dev
+
+
+
+
