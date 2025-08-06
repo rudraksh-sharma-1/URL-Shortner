@@ -4,18 +4,24 @@ import jwt from "jsonwebtoken";
 
 export async function register(req, res) {
   const { username, password } = req.body;
+  /* console.log("REGISTER REQUEST BODY:", req.body); */
 
   try {
     const existingUser = await User.findOne({ username });
-    if (existingUser)
+    if (existingUser){
+
+      console.log("User already exists:", existingUser.username); 
       return res.status(400).json({ error: "Username already exists" });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ username, password: hashedPassword });
 
     await user.save();
+    /* console.log("User registered:", user.username); // ✅ success log */
     res.status(201).json({ message: "User registered successfully" });
   } catch (err) {
+    /* console.error("REGISTER ERROR:", err);   */
     res.status(500).json({ error: "Server error" });
   }
 }
