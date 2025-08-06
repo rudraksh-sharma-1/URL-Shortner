@@ -66,7 +66,10 @@ export async function getUserUrls(req, res) {
     const total = await Url.countDocuments({ user: req.user.userId });
 
     res.json({
-      urls,
+      urls: urls.map(url => ({
+        ...url._doc,
+        shortUrl: `${process.env.BASE_URL}/${url.shortCode}`,
+      })),
       total,
       currentPage: parseInt(page),
       totalPages: Math.ceil(total / limit),
